@@ -2,9 +2,9 @@ import ContactForm from '../components/ContactForm'
 
 export default function Home() {
   return (
-    <div className="min-h-screen px-4 py-12" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)' }}>
-      <div className="max-w-md mx-auto">
-        <h1 className="text-3xl font-bold mb-10 tracking-tight text-center" style={{ color: 'white' }}>
+    <div className="min-h-screen px-4 py-16 flex items-center justify-center" style={{ background: '#e8e5df' }}>
+      <div className="max-w-md w-full mx-auto text-center">
+        <h1 className="text-4xl font-[400] mb-8 tracking-[0.25em] text-[#1d1d1f]" style={{ fontFamily: "'Noto Serif JP', serif" }}>
           お問い合わせ
         </h1>
         <ContactForm />
