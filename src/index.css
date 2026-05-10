@@ -1,26 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
+  --text: #2d2d30;
+  --text-h: #1d1d1f;
+  --bg: #e8e5df; /* Premium Warm Greige matching Suisei */
+  --border: #dcd6cd;
   --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  --accent: #125e4c; /* Suisei Deep Emerald */
+  --accent-bg: rgba(18, 94, 76, 0.1);
+  --accent-border: rgba(18, 94, 76, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: 'Noto Sans JP', system-ui, sans-serif;
-  --heading: 'Noto Sans JP', system-ui, sans-serif;
+  --color-suisei-glow: rgba(178, 227, 215, 0.45);
+
+  --sans: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+  --heading: 'Noto Serif JP', serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -33,24 +35,49 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* --- ✨ Figma Star 68 Ambient Glow --- */
+.light-ambient-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(63.3px);
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  animation: floatGlow 20s infinite alternate ease-in-out;
+}
+
+.glow-1 {
+  top: -10%;
+  right: 15%;
+  width: min(80vw, 650px);
+  height: min(80vw, 650px);
+  background: radial-gradient(circle, #ffffff 0%, var(--color-suisei-glow) 60%, rgba(255,255,255,0) 100%);
+  animation-duration: 25s;
+}
+
+.glow-2 {
+  bottom: -15%;
+  left: -5%;
+  width: min(90vw, 700px);
+  height: min(90vw, 700px);
+  background: radial-gradient(circle, var(--color-suisei-glow) 0%, rgba(232, 229, 223, 0.3) 50%, rgba(255,255,255,0) 100%);
+  animation-delay: -5s;
+  animation-duration: 30s;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate(40px, 20px) scale(1.03) rotate(30deg); }
 }
 
 @keyframes modal-in {

@@ -55,17 +55,19 @@ export default function Login() {
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4"
-      style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)' }}
-    >
-      <div className="w-full max-w-sm bg-white/95 backdrop-blur rounded-2xl shadow-xl px-8 py-8">
+    <div className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+      <div className="light-ambient-wrapper">
+        <div className="ambient-glow glow-1"></div>
+        <div className="ambient-glow glow-2"></div>
+      </div>
+
+      <div className="relative z-10 w-full max-w-sm bg-white/70 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(18,94,76,0.05)] border border-white/60 px-8 py-10">
 
         {!resetMode ? (
           <>
-            <div className="text-center mb-6">
-              <h2 className="text-xl font-bold text-gray-800">管理者ログイン</h2>
-              <p className="text-sm text-gray-400 mt-1">管理画面にアクセスするにはログインが必要です</p>
+            <div className="text-center mb-8">
+              <h2 className="text-xl font-semibold tracking-widest text-[#1d1d1f] font-serif">管理者ログイン</h2>
+              <p className="text-xs text-[#58534e] mt-2 opacity-70 tracking-wider">管理画面にアクセスするにはログインが必要です</p>
             </div>
 
             {error && (
@@ -76,30 +78,34 @@ export default function Login() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-600 mb-1.5">メールアドレス</label>
+                <label className="block text-xs font-medium tracking-widest text-[#58534e] mb-2">メールアドレス</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 bg-gray-50"
+                  className="w-full border border-[#dcd6cd] rounded-xl px-4 py-3 text-sm bg-white/60 backdrop-blur-sm outline-none focus:ring-1 focus:ring-[#125e4c] focus:border-[#125e4c] transition-all duration-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-600 mb-1.5">パスワード</label>
+                <label className="block text-xs font-medium tracking-widest text-[#58534e] mb-2">パスワード</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 bg-gray-50"
+                  className="w-full border border-[#dcd6cd] rounded-xl px-4 py-3 text-sm bg-white/60 backdrop-blur-sm outline-none focus:ring-1 focus:ring-[#125e4c] focus:border-[#125e4c] transition-all duration-500"
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full text-white font-semibold py-2.5 rounded-xl text-sm transition-all disabled:opacity-50 mt-2"
-                style={{ background: 'linear-gradient(135deg, #667eea, #764ba2)' }}
+                className="w-full font-semibold py-3.5 rounded-[50px] text-sm tracking-[0.2em] transition-all duration-700 hover:shadow-[0_12px_30px_rgba(18,94,76,0.15)] active:scale-[0.98] disabled:opacity-50 mt-4 cursor-pointer"
+                style={{ 
+                  background: 'linear-gradient(135deg, rgba(18,94,76,0.1) 0%, rgba(18,94,76,0.2) 100%)',
+                  color: '#125e4c',
+                  border: '1.5px solid rgba(18, 94, 76, 0.35)'
+                }}
               >
                 {loading ? 'ログイン中...' : 'ログイン'}
               </button>
@@ -107,16 +113,16 @@ export default function Login() {
 
             <button
               onClick={() => setResetMode(true)}
-              className="mt-5 w-full text-center text-xs text-gray-400 hover:text-violet-500 transition-colors"
+              className="mt-6 w-full text-center text-xs text-[#58534e] opacity-70 hover:opacity-100 hover:text-[#125e4c] transition-all tracking-widest"
             >
               パスワードを忘れた方はこちら
             </button>
           </>
         ) : (
           <>
-            <div className="text-center mb-6">
-              <h2 className="text-xl font-bold text-gray-800">パスワードをリセット</h2>
-              <p className="text-sm text-gray-400 mt-1">登録済みのメールアドレスにリセットリンクを送ります</p>
+            <div className="text-center mb-8">
+              <h2 className="text-xl font-semibold tracking-widest text-[#1d1d1f] font-serif">パスワードの再設定</h2>
+              <p className="text-xs text-[#58534e] mt-2 opacity-70 tracking-wider">登録済みのメールアドレスにリセットリンクを送ります</p>
             </div>
 
             {resetSent ? (
@@ -137,20 +143,24 @@ export default function Login() {
                 )}
                 <form onSubmit={handleResetRequest} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-600 mb-1.5">メールアドレス</label>
+                    <label className="block text-xs font-medium tracking-widest text-[#58534e] mb-2">メールアドレス</label>
                     <input
                       type="email"
                       value={resetEmail}
                       onChange={(e) => setResetEmail(e.target.value)}
                       required
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 bg-gray-50"
+                      className="w-full border border-[#dcd6cd] rounded-xl px-4 py-3 text-sm bg-white/60 backdrop-blur-sm outline-none focus:ring-1 focus:ring-[#125e4c] focus:border-[#125e4c] transition-all duration-500"
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={resetLoading}
-                    className="w-full text-white font-semibold py-2.5 rounded-xl text-sm disabled:opacity-50 mt-2"
-                    style={{ background: 'linear-gradient(135deg, #667eea, #764ba2)' }}
+                    className="w-full font-semibold py-3.5 rounded-[50px] text-sm tracking-[0.2em] transition-all duration-700 hover:shadow-[0_12px_30px_rgba(18,94,76,0.15)] active:scale-[0.98] disabled:opacity-50 mt-4 cursor-pointer"
+                    style={{ 
+                      background: 'linear-gradient(135deg, rgba(18,94,76,0.1) 0%, rgba(18,94,76,0.2) 100%)',
+                      color: '#125e4c',
+                      border: '1.5px solid rgba(18, 94, 76, 0.35)'
+                    }}
                   >
                     {resetLoading ? '送信中...' : 'リセットメールを送る'}
                   </button>
@@ -160,7 +170,7 @@ export default function Login() {
 
             <button
               onClick={backToLogin}
-              className="mt-5 w-full text-center text-xs text-gray-400 hover:text-violet-500 transition-colors"
+              className="mt-6 w-full text-center text-xs text-[#58534e] opacity-70 hover:opacity-100 hover:text-[#125e4c] transition-all tracking-widest"
             >
               ログイン画面に戻る
             </button>

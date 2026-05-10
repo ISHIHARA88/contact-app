@@ -40,7 +40,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full bg-[#faf9f6] rounded-[48px] shadow-[0_16px_48px_rgba(0,0,0,0.02)] border border-[#e5e4e7] px-10 py-12">
+    <div className="w-full bg-white/70 backdrop-blur-xl rounded-[48px] shadow-[0_24px_60px_rgba(18,94,76,0.04)] border border-white/60 px-10 py-12 transition-all">
 
       {status === 'success' && (
         <p className="mb-5 text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 text-left">
@@ -62,7 +62,7 @@ export default function ContactForm() {
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full border border-[#e5e4e7] rounded-xl px-4 py-3 text-[15px] text-[#1d1d1f] focus:outline-none focus:ring-1 focus:ring-[#f8b500] focus:border-[#f8b500] bg-white transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            className="w-full border border-[#dcd6cd] rounded-xl px-4 py-3.5 text-[15px] text-[#1d1d1f] placeholder-[#b0aaa3] bg-white/60 backdrop-blur-sm outline-none focus:ring-1 focus:ring-[#125e4c] focus:border-[#125e4c] transition-all duration-500"
             placeholder="山田 太郎"
           />
         </div>
@@ -75,7 +75,7 @@ export default function ContactForm() {
             value={form.email}
             onChange={handleChange}
             required
-            className="w-full border border-[#e5e4e7] rounded-xl px-4 py-3 text-[15px] text-[#1d1d1f] focus:outline-none focus:ring-1 focus:ring-[#f8b500] focus:border-[#f8b500] bg-white transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            className="w-full border border-[#dcd6cd] rounded-xl px-4 py-3.5 text-[15px] text-[#1d1d1f] placeholder-[#b0aaa3] bg-white/60 backdrop-blur-sm outline-none focus:ring-1 focus:ring-[#125e4c] focus:border-[#125e4c] transition-all duration-500"
             placeholder="example@mail.com"
           />
         </div>
@@ -88,7 +88,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={5}
-            className="w-full border border-[#e5e4e7] rounded-xl px-4 py-3 text-[15px] text-[#1d1d1f] focus:outline-none focus:ring-1 focus:ring-[#f8b500] focus:border-[#f8b500] bg-white resize-none transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            className="w-full border border-[#dcd6cd] rounded-xl px-4 py-3.5 text-[15px] text-[#1d1d1f] placeholder-[#b0aaa3] bg-white/60 backdrop-blur-sm outline-none focus:ring-1 focus:ring-[#125e4c] focus:border-[#125e4c] transition-all duration-500 resize-none"
             placeholder="ご質問・ご要望をご記入ください"
           />
         </div>
@@ -96,14 +96,15 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="w-full font-bold py-4 rounded-[50px] text-[16px] tracking-widest transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:opacity-50 hover:-translate-y-1 hover:shadow-[0_15px_25px_rgba(248,181,0,0.3)] cursor-pointer"
+          className="w-full font-semibold py-4 rounded-[50px] text-[16px] tracking-[0.2em] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:opacity-50 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(18,94,76,0.15)] cursor-pointer active:scale-[0.98]"
           style={{ 
-            background: 'linear-gradient(135deg, #fceabb 0%, #f8b500 50%, #fceabb 100%)',
-            color: '#3b2a24',
-            border: '1px solid rgba(255, 255, 255, 0.5)'
+            background: 'linear-gradient(135deg, rgba(18, 94, 76, 0.1) 0%, rgba(18, 94, 76, 0.2) 100%)',
+            color: '#125e4c',
+            border: '1.5px solid rgba(18, 94, 76, 0.35)',
+            backdropFilter: 'blur(10px)'
           }}
         >
-          {status === 'loading' ? '送信中...' : '送 信 す る'}
+          {status === 'loading' ? '送信中...' : '送信する'}
         </button>
       </form>
     </div>
