@@ -10,7 +10,10 @@ export default function Home() {
       </div>
       
       <div className="relative z-10 max-w-md w-full mx-auto text-center">
-        <h1 className="text-[32px] md:text-[36px] font-[200] mb-10 tracking-[0.35em] text-[#1a2522]" style={{ fontFamily: "'Noto Serif JP', serif" }}>
+        <span className="block font-['Inter'] text-[13px] font-medium tracking-[0.35em] text-[#125e4c] mb-4 uppercase">
+          Contact Us
+        </span>
+        <h1 className="text-[30px] md:text-[32px] font-[200] mb-12 tracking-[0.45em] text-[#1a2522]" style={{ fontFamily: "'Noto Serif JP', serif" }}>
           お問い合わせ
         </h1>
         <ContactForm />
